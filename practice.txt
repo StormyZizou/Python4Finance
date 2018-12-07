@@ -4,6 +4,10 @@ Created on Wed Dec  5 09:17:48 2018
 
 @author: pa89000
 """
+"""
+Context by SS:
+I created a folder called “lol” on my desktop containing 3 word files and 1 folder. This is my source_folder in the code which is contained in a parent folder (lol_p). Similarly “lol_d” refers to the destination_folder in which the zip file would be copied in the end. The function pack_it() and addFolderToZip() zips all the files and folders within the source folder respectively. The compressed file gets stored in the parent folder which is outside the source folder. The function pack_it_to() then finally copies this compressed file to the destination folder.
+"""
 
 import os
 import zipfile
