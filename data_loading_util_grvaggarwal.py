@@ -36,7 +36,7 @@ def getTblNames(source_loc, source_file):
 
 def getQuery(tbl_name, all_queries):
     """
-    Get table relvant query from a dictionary all_queries
+    Get table relevant query from a dictionary 'all_queries'
     """
     if tbl_name in all_queries.keys():
         query = all_queries[tbl_name]
@@ -44,11 +44,11 @@ def getQuery(tbl_name, all_queries):
         query = "SELECT * from {0}".format(tbl_name)
     return query
 
-def fetchTable(db, tbl_name, queryfrom, out_loc):
+def fetchTable(db, tbl_name, query_from, out_loc):
     """
     Query the required table from the Database and return as csv    
     """
-    query = getQuery(tbl_name, queryfrom)
+    query = getQuery(tbl_name, query_from)
     req_df = pandas.read_sql_query(query, db)
     out_csv = req_df.to_csv(os.path.join(out_loc, tbl_name+".csv"), index = True)
     return out_csv
@@ -57,7 +57,7 @@ def main():
     client_db = "client_database.db"
     source_file = r"tables.txt" #file name for txt with all table names
     source_loc = r"..\Input" #source path for tables.txt
-    out_loc = r"..\Output" #Output path for csv files that feed AYASDI
+    out_loc = r"..\Output" #Output path for csv files
     all_queries = {'TABLE1': "SELECT * from TABLE1"} #dummy dict that includes required queries
     
     db = dbConnect(client_db)
