@@ -19,10 +19,14 @@ def main():
     pack_it_to(src, destination_folder)
     
 def pack_it(source_folder):
-    zipf = r"C:\Users\pa89000\Desktop\lol_p\compress.zip"
+"""
+Add description comments to functions. This enables using the __help__ in Python
+
+"""
+    zipf = r"C:\Users\pa89000\Desktop\lol_p\compress.zip" # GA:  this should be an input for the function to be used anywhere
     zippedHelp = zipfile.ZipFile(zipf, "w", compression=zipfile.ZIP_DEFLATED )
     list = os.listdir(source_folder)
-    for file_list in list:
+    for file_list in list:                                # GA: "list" is not a good choice of name for a variable
         file_name = os.path.join(source_folder,file_list)
 
         if os.path.isfile(file_name):
@@ -34,6 +38,12 @@ def pack_it(source_folder):
     zippedHelp.close() 
 
 def addFolderToZip(zippedHelp,folder,source_folder):
+"""
+Good logic to use a "Recursive function" to navigate through sub-folders. An alternate optimal way could have been to get the file_paths of all constituents using the library os and then zip all those paths.
+
+Also, look at the folder structure with in the zip file that is created. It retains all the sub-folders, which would be sub-optimal in the case we are zipping a deeply nested folder. 
+
+"""
     path=os.path.join(source_folder,folder)
     print path
     file_list=os.listdir(path)
